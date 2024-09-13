@@ -9,7 +9,14 @@
 - Resolution of 1368px x 768px
 
 ## Software Requirements
-- Anaconda3-2023.09
+- Anaconda3-2024.02
 - VS Code (version last updated)
 - Google Chrome (version last updated)
-- OS Ubuntu 22.04 LTS
+- Windows 10 22H2
+
+## Library Requirements
+- Python 3.11.7
+- Pandas 2.1.4
+- Numpy 1.26.4
+- Plotly 5.24.0
+- Streamlit 1.38.0
