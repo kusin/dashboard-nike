@@ -57,7 +57,6 @@ with col1:
 
 # eda region by total sales
 with col2:
-  # calculate region by total sales
   df_region = dataset.groupby(by=["Region"])["Total Sales"].aggregate("sum").sort_values(ascending=True).reset_index()
   st.plotly_chart(pieplot(df_region,"Total Sales","Region","Region wise total sales"),use_container_width=True)
 
