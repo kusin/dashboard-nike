@@ -43,29 +43,26 @@ with col4:
     index=0
   )
 
-# container-eda
-col1, col2= st.columns([0.33, 0.33], gap="small")
+df_product = dataset.groupby(by=["Product"])["Total Sales"].aggregate("sum").sort_values(ascending=True).reset_index()
+st.plotly_chart(barplot(df_product,"Total Sales","Product","Product wise total sales"),use_container_width=True)
 
-# eda product by total sales
-with col1:
-  df_product = dataset.groupby(by=["Product"])["Total Sales"].aggregate("sum").sort_values(ascending=True).reset_index()
-  df_product = df_product.tail(4)
-  st.plotly_chart(barplot(df_product,"Total Sales","Product","Product wise total sales"),use_container_width=True)
+# container-eda
+col1, col2, col3= st.columns([0.33, 0.33, 0.33], gap="small")
 
 # eda retailer by total sales
-with col2:
+with col1:
   df_retailer = dataset.groupby(by=["Retailer"])["Total Sales"].aggregate("sum").sort_values(ascending=True).reset_index()
   df_retailer = df_retailer.tail(4)
-  st.plotly_chart(barplot(df_retailer,"Total Sales","Retailer","Retailer wise total sales"),use_container_width=True)
+  st.plotly_chart(pieplot(df_retailer,"Total Sales","Retailer","Retailer wise total sales"),use_container_width=True)
 
 # eda region by total sales
-with col1:
+with col2:
   # calculate region by total sales
   df_region = dataset.groupby(by=["Region"])["Total Sales"].aggregate("sum").sort_values(ascending=True).reset_index()
-  st.plotly_chart(barplot(df_region,"Region","Total Sales","Region wise total sales"),use_container_width=True)
+  st.plotly_chart(pieplot(df_region,"Total Sales","Region","Region wise total sales"),use_container_width=True)
 
 # eda sales method by total sales
-with col2:
+with col3:
   df_sales_method = dataset.groupby(by=["Sales Method"])["Total Sales"].aggregate("sum").sort_values(ascending=True).reset_index()
   st.plotly_chart(pieplot(df_sales_method,"Total Sales","Sales Method","Sales method wise total sales"),use_container_width=True)
 
