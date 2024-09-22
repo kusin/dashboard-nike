@@ -14,7 +14,7 @@ st.set_page_config(page_title="My Dasboard",layout="wide")
 dataset = get_dataset()
 
 # container-header
-st.markdown("## Nike Sales Dashboard on 2020 - 2021")
+st.markdown("## Nike Sales Dashboard on 2020 - 2021 by Rian Girsang")
 
 # container-config
 col1, col2, col3, col4 = st.columns([0.25, 0.25, 0.25, 0.25], gap="small")
@@ -25,23 +25,24 @@ with col1:
     index=0
   )
 with col2:
-  retailer = st.selectbox(
-    label="Choose a Retailer",
-    options=("All","Amazon","Foot Locker","Kohl's","Sports Direct","Walmart","West Gear"),
-    index=0
-  )
-with col3:
-  sales = st.selectbox(
-    label="Choose a Sales Method",
-    options=("All","In-store","Online","Outlet"),
-    index=0
-  )
-with col4:
   region = st.selectbox(
     label="Choose a Region",
     options=("All","Midwest","Northeast","South","Southeast","West"),
     index=0
   )
+with col3:
+  retailer = st.selectbox(
+    label="Choose a Retailer",
+    options=("All","Amazon","Foot Locker","Kohl's","Sports Direct","Walmart","West Gear"),
+    index=0
+  )
+with col4:
+  sales = st.selectbox(
+    label="Choose a Sales Method",
+    options=("All","In-store","Online","Outlet"),
+    index=0
+  )
+
 
 df_product = dataset.groupby(by=["Product"])["Total Sales"].aggregate("sum").sort_values(ascending=True).reset_index()
 st.plotly_chart(barplot(df_product,"Total Sales","Product","Product wise total sales"),use_container_width=True)
