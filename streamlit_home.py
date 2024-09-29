@@ -14,7 +14,7 @@ st.set_page_config(page_title="My Dasboard",layout="wide")
 dataset = get_dataset()
 
 # container-header
-st.markdown("## Nike Sales Dashboard on 2020 - 2021 by Rian Girsang")
+st.markdown("## Nike Sales Dashboard on 2020 - 2021")
 
 # container-config
 col1, col2, col3, col4 = st.columns([0.25, 0.25, 0.25, 0.25], gap="small")
